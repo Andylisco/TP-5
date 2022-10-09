@@ -41,7 +41,7 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 64, SpringLayout.WEST, this);
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("IDAutogenerado");
+		JLabel lblNewLabel_1 = new JLabel("");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 0, SpringLayout.NORTH, lblNewLabel);
 		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 77, SpringLayout.EAST, lblNewLabel);
 		add(lblNewLabel_1);
@@ -55,10 +55,10 @@ public class Pnl_Agregar extends JPanel {
 		cb_Genero = new JComboBox();
 
 		@SuppressWarnings("rawtypes")
-		JComboBox cb_Genero = new JComboBox();
+		JComboBox<Categorias> cb_Genero = new JComboBox();
 		springLayout.putConstraint(SpringLayout.WEST, cb_Genero, 153, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, cb_Genero, -168, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, cb_Genero, 243, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, cb_Genero, 348, SpringLayout.WEST, this);
 		cb_Genero.setModel(new DefaultComboBoxModel(new String[] {"Seleccione un genero", "Terror", "Accion", "Suspenso", "Romantica"}));
 		add(cb_Genero);
 		
@@ -70,7 +70,7 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, txtNombre, 128, SpringLayout.EAST, lblNewLabel_2);
 		add(txtNombre);
 		txtNombre.setColumns(10);
-		
+		lblNewLabel_1.setText("1");
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
