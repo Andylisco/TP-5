@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
@@ -16,10 +17,17 @@ import java.awt.GridLayout;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import TP_5.Categorias;
+import javax.swing.SpringLayout;
+import TP_5.Peliculas;
 public class Pnl_Agregar extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
 	private JComboBox cb_Genero;
+
 
 	/**
 	 * Create the panel.
@@ -45,6 +53,9 @@ public class Pnl_Agregar extends JPanel {
 		add(lblNewLabel_2);
 		
 		cb_Genero = new JComboBox();
+
+		@SuppressWarnings("rawtypes")
+		JComboBox cb_Genero = new JComboBox();
 		springLayout.putConstraint(SpringLayout.WEST, cb_Genero, 153, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, cb_Genero, -168, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, cb_Genero, 243, SpringLayout.WEST, this);
@@ -87,6 +98,9 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_3, 64, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_3, 110, SpringLayout.WEST, this);
 		add(lblNewLabel_3);
+		
 
 	}
+	
+	
 }
