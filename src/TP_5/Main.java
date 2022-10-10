@@ -3,6 +3,7 @@ package TP_5;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,11 +11,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
+	private static DefaultListModel<ArrayList> DlModel;
 
 	/**
 	 * Launch the application.
@@ -24,6 +27,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
+					DlModel =new DefaultListModel<ArrayList>();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,6 +56,7 @@ public class Main extends JFrame {
 				
 				
 				Pnl_Agregar panel = new Pnl_Agregar();
+				panel.setDefaultListModel(DlModel);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -65,6 +70,7 @@ public class Main extends JFrame {
 				contentPane.removeAll();
 								
 				Pnl_Listar panel = new Pnl_Listar();
+				panel.setDefaultListModel(DlModel);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();

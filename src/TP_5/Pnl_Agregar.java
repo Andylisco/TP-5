@@ -6,18 +6,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+
+
 import java.awt.GridLayout;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.awt.event.ActionEvent;
-import TP_5.Categorias;
+import TP_5.Generos;
 import javax.swing.SpringLayout;
 import TP_5.Peliculas;
 public class Pnl_Agregar extends JPanel {
@@ -26,7 +27,9 @@ public class Pnl_Agregar extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField txtNombre;
-	private JComboBox cb_Genero;
+	private JComboBox<Generos> cb_Genero;
+	private DefaultListModel<ArrayList> DlModel;
+	
 
 
 	/**
@@ -52,15 +55,21 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_2, 110, SpringLayout.WEST, this);
 		add(lblNewLabel_2);
 		
-		cb_Genero = new JComboBox();
+
 
 		@SuppressWarnings("rawtypes")
-		JComboBox<Categorias> cb_Genero = new JComboBox();
+		JComboBox<Generos> cb_Genero = new JComboBox<Generos>();
 		springLayout.putConstraint(SpringLayout.WEST, cb_Genero, 153, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, cb_Genero, -168, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, cb_Genero, 243, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, cb_Genero, 348, SpringLayout.WEST, this);
-		cb_Genero.setModel(new DefaultComboBoxModel(new String[] {"Seleccione un genero", "Terror", "Accion", "Suspenso", "Romantica"}));
+		cb_Genero.addItem(new Generos("Seleccione un Genero"));
+		cb_Genero.addItem(new Generos("Terror"));
+		cb_Genero.addItem(new Generos("Accion"));
+		cb_Genero.addItem(new Generos("Suspenso"));
+		cb_Genero.addItem(new Generos("Romantica"));
 		add(cb_Genero);
+		
 		
 		txtNombre = new JTextField();
 		springLayout.putConstraint(SpringLayout.NORTH, cb_Genero, 32, SpringLayout.SOUTH, txtNombre);
@@ -70,21 +79,29 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, txtNombre, 128, SpringLayout.EAST, lblNewLabel_2);
 		add(txtNombre);
 		txtNombre.setColumns(10);
-		lblNewLabel_1.setText("1");
+		Peliculas p = new Peliculas();
+		lblNewLabel_1.setText(p.getId());
 		JButton btnNewButton = new JButton("Aceptar");
+		ArrayList<Peliculas> ListaPeliculas = new ArrayList<Peliculas>();
+		DlModel =new DefaultListModel<ArrayList>();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(cb_Genero.getSelectedIndex()==0) {
-					System.out.println("INGRESO INCORRECTO");
-				}
-				else {					
-					Categorias c = new Categorias();
-					c.setId(Integer.parseInt(lblNewLabel_1.getText()));
-					c.setNombre(txtNombre.getText());
+				if(cb_Genero.getSelectedIndex()!=0&&txtNombre.getText().trim()!="") {
+					
+                    /*Generos c = new Generos();
+					
 					c.setGenero(cb_Genero.getSelectedItem().toString());
-					JOptionPane.showMessageDialog(null, c.toString());
-					System.out.println(c.getId()+1);
+					JOptionPane.showMessageDialog(null, c.toString());*/
+					Peliculas p = new Peliculas();
+					p.setNombre(txtNombre.getText());
+					p.setGenero(cb_Genero.getSelectedItem().toString());
+					ListaPeliculas.add(p);
 				}
+				else System.out.println("INGRESO INCORRECTO");
+				
+				Collections.sort(ListaPeliculas);
+				
+				DlModel.addElement(ListaPeliculas);
 			}
 		});
 		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 0, SpringLayout.WEST, lblNewLabel);
@@ -99,8 +116,14 @@ public class Pnl_Agregar extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_3, 110, SpringLayout.WEST, this);
 		add(lblNewLabel_3);
 		
+		
+		
 
 	}
 	
-	
+	public void setDefaultListModel(DefaultListModel<ArrayList> dlModel2) {
+		this.DlModel=dlModel2;
+		
+	}
+
 }

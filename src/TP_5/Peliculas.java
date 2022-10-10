@@ -1,24 +1,25 @@
 package TP_5;
 
 public class Peliculas implements Comparable<Peliculas> {
-	private static int contador= 0;
+	private static int contador= 1;
 	private final int id=contador;
 	private String nombre;
-	private Categorias categoria;
+	private String Genero;
 	
 	public Peliculas()
 	{
 		contador++;
-		categoria = new Categorias();
+		
 	}
 	
 
-	public Peliculas(String nombre, Categorias categoria) {
+	public Peliculas(String nombre, String genero) {
 		super();
-		contador++;
-		categoria = new Categorias();
+		
+		
 		this.nombre = nombre;
-		this.categoria = categoria;
+		this.Genero = genero;
+		contador++;
 	}
 	
 	public static int getContador() {
@@ -37,21 +38,25 @@ public class Peliculas implements Comparable<Peliculas> {
 		this.nombre = nombre;
 	}
 
-	public Categorias getCategoria() {
-		return categoria;
+	
+
+	public String getGenero() {
+		return Genero;
 	}
 
-	public void setCategoria(Categorias categoria) {
-		this.categoria = categoria;
+
+	public void setGenero(String string) {
+		Genero = string;
 	}
 
-	public int getId() {
-		return id;
+
+	public String getId() {
+		return Integer.toString(id);
 	}
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + " - Categoria: " + categoria;
+		return "Nombre: " + nombre + " - Genero: " + Genero;
 	}
 
 
