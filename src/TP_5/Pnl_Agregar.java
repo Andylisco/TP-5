@@ -97,12 +97,14 @@ public class Pnl_Agregar extends JPanel {
 					p.setGenero(cb_Genero.getSelectedItem().toString());
 					ListaPeliculas.add(p);
 				}
-				else System.out.println("INGRESO INCORRECTO");
+				else JOptionPane.showMessageDialog(null,"INGRESO INCORRECTO");
 				
 				Collections.sort(ListaPeliculas);
 				
 				DlModel.addElement(ListaPeliculas);
 			}
+
+			
 		});
 		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 0, SpringLayout.WEST, lblNewLabel);
 		add(btnNewButton);
